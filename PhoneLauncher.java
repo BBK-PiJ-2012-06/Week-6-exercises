@@ -6,7 +6,7 @@ public class PhoneLauncher {
 	
 	public void launch() {
 		System.out.println( "Testing my new SmartPhone. How exciting..." );
-		SmartPhone sp = new SmartPhone();
+		SmartPhone sp = new SmartPhone("Samsung");
 		
 		System.out.println( "\nLet's call some people:" );
 		sp.call("07929210320");
