@@ -1,5 +1,22 @@
 public class SmartPhone extends MobilePhone {
-	public void browseWeb(Sring url) {
+	@Override
+	public void call(String number) {
+		if( number.charAt(0) == '0' && number.charAt(1) == '0' ) {
+			System.out.println( "Calling " + number + " through the internet to save money" );
+			if( lastNumbers.size() != 10 ) {
+			lastNumbers.add(number);
+			}
+			else {
+			String delete = lastNumbers.poll();
+			lastNumbers.add(number);
+			}
+		}
+		else {
+			super.call(number);
+		}
+	}
+	
+	public void browseWeb(String url) {
 		System.out.println( "Loading " + url );
 	}
 	

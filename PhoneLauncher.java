@@ -6,20 +6,21 @@ public class PhoneLauncher {
 	
 	public void launch() {
 		System.out.println( "Testing my new SmartPhone. How exciting..." );
-		Phone sp = new SmartPhone();
+		SmartPhone sp = new SmartPhone();
 		
 		System.out.println( "\nLet's call some people:" );
-		sp.call(07929210320);
-		sp.call(07929210321);
-		sp.call(07929210322);
-		sp.call(07929210323);
-		sp.call(07929210324);
-		sp.call(07929210325);
-		sp.call(07929210326);
-		sp.call(07929210327);
-		sp.call(07929210328);
-		sp.call(07929210329);
-		sp.call(07929210330);
+		sp.call("07929210320");
+		sp.call("07929210321");
+		sp.call("07929210322");
+		sp.call("07929210323");
+		sp.call("07929210324");
+		sp.call("07929210325");
+		sp.call("07929210326");
+		sp.call("07929210327");
+		sp.call("07929210328");
+		sp.call("07929210329");
+		sp.call("07929210330");
+		sp.call("00111212121");
 		
 		System.out.println( "\nLet's see who we just called:" );
 		sp.printLastNumbers();
@@ -33,7 +34,6 @@ public class PhoneLauncher {
 		System.out.println( "\nLet's browse the web:" );
 		sp.browseWeb("http://www.friendface.com");
 		
-		System.out.println( "\nLet's find our GPS position:" );
-		sp.findPosition();
+		System.out.println( "\nLet's find our GPS position: " + sp.findPosition() );
 	}
 }
