@@ -6,14 +6,19 @@ public class PhoneCaster {
 	
 	public void launch() {
 		MobilePhone myPhone = new SmartPhone("Nokia");
-		myPhone.call("07712334578");
-		System.out.println("myPhone's brand is " + myPhone.getBrand());
-		myPhone.printLastNumbers();
-		myPhone.ringAlarm("08:00");
-		myPhone.playGame("Angry Badgers");
-		
 		SmartPhone mySmartPhone = (SmartPhone) myPhone;
-		mySmartPhone.browseWeb("www.friendface.com");
-		mySmartPhone.findPosition();
+		
+		testPhone(myPhone);
+		testPhone(mySmartPhone);
+	}
+	
+	public void testPhone(Phone phone) {
+		phone.call("07712334578");
+		System.out.println("myPhone's brand is " + phone.getBrand());
+		phone.printLastNumbers();
+		phone.ringAlarm("08:00");
+		phone.playGame("Angry Badgers");
+		phone.browseWeb("www.friendface.com");
+		phone.findPosition();
 	}
 }
