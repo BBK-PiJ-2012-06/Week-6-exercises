@@ -13,12 +13,13 @@ public class PhoneCaster {
 	}
 	
 	public void testPhone(Phone phone) {
-		phone.call("07712334578");
-		System.out.println("myPhone's brand is " + phone.getBrand());
-		phone.printLastNumbers();
-		phone.ringAlarm("08:00");
-		phone.playGame("Angry Badgers");
-		phone.browseWeb("www.friendface.com");
-		phone.findPosition();
+		SmartPhone sphone = (SmartPhone) phone;
+		sphone.call("07712334578");
+		System.out.println("myPhone's brand is " + sphone.getBrand());
+		sphone.printLastNumbers();
+		sphone.ringAlarm("08:00");
+		sphone.playGame("Angry Badgers");
+		sphone.browseWeb("www.friendface.com");
+		sphone.findPosition();
 	}
 }
