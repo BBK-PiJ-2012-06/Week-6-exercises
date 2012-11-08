@@ -1,4 +1,4 @@
-public class MockStack implements Stack<T> {
+public class MockStack implements Stack<N> {
 	public void push
 	
 	public T pop

@@ -11,14 +11,17 @@ public class GenericList<T> implements List<T> {
 		iterator = null;
 	}	
 	
+	@Override
 	public int size() {
 		return size;
 	}
 	
+	@Override
 	public T getFirst() {
 		return firstElement.getValue();
 	}
 	
+	@Override
 	public T getLast() {
 		return lastElement.getValue();
 	}
@@ -31,6 +34,7 @@ public class GenericList<T> implements List<T> {
 		return lastElement;
 	}
 
+	@Override
 	public T getValue(int index) {
 		iterator = firstElement;
 		for(int i=0; i!=index; i++) {
@@ -60,6 +64,7 @@ public class GenericList<T> implements List<T> {
 			return false;
 	}
 	
+	@Override
 	public void add(T newValue) {
 		if(firstElement == null) {
 			// must be first element
@@ -75,17 +80,45 @@ public class GenericList<T> implements List<T> {
 		}
 		size++;
 	}
-	
+	@Override
+	public boolean delete(int index) {
+		if(index == 0) {
+			firstElement = firstElement.getNext();
+			firstElement.setPrev(null);
+			size--;
+			return true;
+		}
+		if(index == size-1) {
+			lastElement = lastElement.getPrev();
+			lastElement.setNext(null);
+			size--;
+			return true;
+		}
+		iterator = firstElement;
+		for(int i=0; i!=index; i++) {
+			if(!cycleForwards()) {
+				System.out.println("Index out of bounds");
+				return false;
+			}
+		}
+		iterator.getNext().setPrev(iterator.getPrev());
+		iterator.getPrev().setNext(iterator.getNext());
+		size--;
+		return true;
+	}
+	@Override
 	public boolean delete(T value) {
 		// check first and last elements
 		if(firstElement.getValue() == value) {
 			firstElement = firstElement.getNext();
 			firstElement.setPrev(null);
+			size--;
 			return true;
 		}
 		if(lastElement.getValue() == value) {
 			lastElement = lastElement.getPrev();
 			lastElement.setNext(null);
+			size--;
 			return true;
 		}
 		iterator = firstElement;
@@ -93,6 +126,7 @@ public class GenericList<T> implements List<T> {
 			if(iterator.getValue() == value) {
 				iterator.getNext().setPrev(iterator.getPrev());
 				iterator.getPrev().setNext(iterator.getNext());
+				size--;
 				return true;
 			}
 		} while(cycleForwards());
